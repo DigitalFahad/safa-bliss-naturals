@@ -1,0 +1,116 @@
+.product-detail-page {
+    background-color: var(--color-white);
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: start;
+}
+
+.main-image-container {
+    aspect-ratio: 1;
+    background-color: var(--color-cream);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-detail-category {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-detail-title {
+    font-size: 2.5rem;
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-xs);
+}
+
+.product-detail-tagline {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-lg);
+}
+
+.product-detail-price {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.product-detail-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-text);
+}
+
+.whatsapp-action {
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-lg);
+    background-color: var(--color-cream);
+    border-radius: var(--radius-lg);
+    text-align: center;
+}
+
+.btn-block {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-lg {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.cod-note {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-top: var(--spacing-sm);
+}
+
+.product-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.product-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-beige);
+    padding-bottom: var(--spacing-xs);
+    display: inline-block;
+}
+
+.detail-list {
+    list-style: disc;
+    padding-left: var(--spacing-lg);
+}
+
+.detail-list li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+    }
+}
