@@ -1,16 +1,35 @@
-# React + Vite
+# Safa Bliss Naturals — Shopify Replacement (Development)
+Source: official Shopify CSV exports (14 total, 11 active), 25 published Judge.me reviews, original Sense theme reference, live storefront screenshots.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**This branch is a development preview, NOT the production store.** Checkout is disabled, orders and customer data are never collected. Do not connect safabliss.pk or cancel Shopify.
 
-Currently, two official plugins are available:
+## Stack
+- React 19 + Vite 7 + React Router, using existing repository dependencies
+- Product/variant data and published reviews copied from existing Safa Bliss migration files
+- Local cart only; no live inventory, payments or checkout
+- Planned production: Cloudflare Workers + D1 + R2 + Resend, server-side order creation with price/discount/shipping validation
+- This repository is currently public. **Never commit customer exports, order exports, API keys or credentials.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run
+npm ci
+npm run dev
+npm run build
 
-## React Compiler
+## Routes
+/ /products /collections/:slug /products/:handle /cart /checkout-preview /reviews /our-story /faq
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Migration/launch blockers
+1. Independently host the original logo and all product/review images (currently external assets).
+2. Recreate original video testimonials, custom homepage/Trio blocks, About/Our Story and approved policies without fabricated content.
+3. Validate inventory, shipping by city, discount codes (e.g. Sum10), tax and COD/manual payment rules.
+4. Implement backend API and D1 order storage with robust validation, rate limits, bot protection, idempotency, safe retries, authenticated admin access, backups and order emails.
+5. Migrate historical orders/customers securely OFF GitHub. Do not put personally identifiable data in public frontend.
+6. Build server-rendered or prerendered public routes and redirects before migration to preserve SEO. Vite SPA preview is not SEO-equivalent to Shopify.
+7. Review mobile UX, accessibility, page performance, regression tests and secure launch checklist.
+8. Keep Shopify live until full end-to-end test orders have succeeded.
 
-## Expanding the ESLint configuration
+## Deployment
+This is a Vite SPA frontend preview; for temporary Cloudflare Pages static hosting use build command \`npm run build\`, output \`dist\`. Add SPA fallback handling if route refreshing is not working. Do not enable real checkout until API + security are complete.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Data integrity
+Product prices and variants came from Shopify exports. Product images currently point to Shopify CDN. Review images remain on Judge.me, with no unsupported "verified buyer" badge. The original uploaded product descriptions are displayed as escaped text, not injected as HTML, to avoid XSS.
